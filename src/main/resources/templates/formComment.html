@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Usuarios</title>
+        <style>
+        .header {
+            color: #36A0FF;
+            font-size: 27px;
+            padding: 10px;
+        }
+    
+        .bigicon {
+            font-size: 35px;
+            color: #36A0FF;
+        }
+        </style>
+        
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+    
+    <body>
+	<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal"  method="post" th:object="${user}">
+                    <fieldset>
+                        <legend class="text-center header">Añadir Comentario</legend>
+                            <input type="hidden" name="id"  th:field="*{id}" />       
+                            <div class="form-group">
+                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                                <div class="col-md-8">
+                                    <input id="fname" name="name" type="text" placeholder="Nombre"  th:field="*{nombre}" class="form-control">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                                <div class="col-md-8">
+                                    <textarea id= "comment" name="comment" form="usrform" placeholder="Comentario " class="form-control">Enter text here...</textarea>
+                                </div>
+                            </div>
+                            
+                            <p><input type="submit" value="Enviar" /></p>
+                            <p><a th:href="@{/comment}">Volver</a></p>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+	
+	</body>
+</html>
+

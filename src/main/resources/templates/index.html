@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spring Web</title>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+body{
+    margin-top:20px;
+    background-color: #edf0f0;    
+}
+.btn-primary, 
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary.active, 
+.btn-primary.focus, 
+.btn-primary:active, 
+.btn-primary:focus, 
+.btn-primary:hover, 
+.open>.dropdown-toggle.btn-primary {
+    background-color: #29b464;
+    border: 1px solid #101010;
+}
+.p-t-10 {
+    padding-top: 10px !important;
+}
+.media-main a.pull-left {
+    width: 100px;
+   
+}
+.thumb-lg {
+    height: 84px;
+    width: 84px;
+}
+.media-main .info {
+    overflow: hidden;
+    color: #000;
+    background-color: #7ae0e2;
+    text-align:center;
+}
+.media-main .info h4 {
+    padding-top: 10px;
+    margin-bottom: 5px;
+    text-align:center;
+}
+.social-links li a {
+    background: #EFF0F4;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    color: #7A7676;
+}
+.tabla_style{
+    text-align:center;
+    min-width:200px;
+}
+
+.media_main{
+    text-align:center;
+    min-width:200px;
+    
+}
+
+.navbar-inverse .navbar-brand {
+    color: #f8f8f8;
+}
+
+.col-sm-6{
+    width: 1375px;
+}
+
+.fa-remove:before, .fa-close:before, .fa-times:before {
+    content: "\f057";
+}
+
+.fa-remove:before, .fa-comment:before, .fa-times:before {
+    content: "\f075";
+    size: auto;
+}
+
+</style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Prueba Adrián</a>
+    </div>
+     <p th:text="${mensaje}"></p>
+    <a class="btn btn-primary" th:href="@{/add}"  role="button">Añadir Usuarios</a>
+</nav>
+    
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel">
+                <div class="panel-body p-t-10">
+                    <div class="media-main" style= "width: 1100px;">
+                        <table class="table table-striped custom-table">
+                        <thead>
+                        <tr>
+                        <th scope="col" class="tabla_style">Imagen</th>
+                        <th scope="col" class="tabla_style">Nombre</th>
+                        <th scope="col" class="tabla_style">Email</th>
+                        <th scope="col" class="tabla_style">Editar</th>
+                        <th scope="col" class="tabla_style">Ver Comentarios</th>
+                        <th scope="col" class="tabla_style">Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tr th:each="usuario : ${usuarios}" class="tabla_style">
+                         <td> <a class="pull-left" href="#" data-mdb-toggle="tooltip" title="Imagen">
+                            <img class="thumb-lg img-circle bx-s" src="https://bootdey.com/img/Content/user_1.jpg" alt="" >
+                        </a>
+                        </td>
+                        <div class="info">
+                            <td th:text="${usuario.nombre}" class="tabla_style">Nombre Persona</td>
+                            <td th:text="${usuario.email}" class="tabla_style">Correo Persona</td>
+                            <p th:if="${usuarios==null or usuarios.empty}">No hay usuarios</p>	
+                        </div>
+                        <div class="pull-right btn-group-sm">
+                            <td><a th:href="@{/edit/} + ${usuario.id}" class="tabla_style" >
+                                <i class="fa fa-pencil" ></i> </i>
+                            </a></td>
+                            
+                            <td><a th:href="@{/comment(id=${usuario.id})}" class="tabla_style" >
+                                <i class="fa fa-comment" ></i>
+                            </a></td>
+                            
+                            <td><a th:href="@{/delete(id=${usuario.id})}" class="tabla_style" >
+                                <i class="fa fa-close" ></i>
+                            </a></td>
+                        </div>
+                         
+         
+    	
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                
+                </div>
+            </div>
+        </div>
+
+          
+</body>
+</html>
